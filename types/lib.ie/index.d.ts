@@ -9,24 +9,24 @@ interface EventTarget {
 }
 
 interface IEDocumentEventMap {
-	"onreadystatechange": Event
+	"onreadystatechange": Event;
 }
 
 interface IEWindowEventMap {
-	"onload": Event
+	"onload": Event;
 }
 
 interface Document {
-	attachEvent<K extends keyof IEDocumentEventMap>(type: K, listener: (this: Window, ev: IEDocumentEventMap[K]) => any): void;
-	attachEvent(type: string, listener: EventListener): void;
-	detachEvent<K extends keyof IEDocumentEventMap>(type: K, listener: (this: Window, ev: IEDocumentEventMap[K]) => any): void;
+	attachEvent<K extends keyof IEDocumentEventMap>(type: K, listener: (this: Window, ev: IEDocumentEventMap[K]) => void): boolean;
+	attachEvent(type: string, listener: EventListener): boolean;
+	detachEvent<K extends keyof IEDocumentEventMap>(type: K, listener: (this: Window, ev: IEDocumentEventMap[K]) => void): void;
 	detachEvent(type: string, listener: EventListener): void;
 }
 
 interface Window {
-	attachEvent<K extends keyof IEWindowEventMap>(type: K, listener: (this: Window, ev: IEWindowEventMap[K]) => any): void;
-	attachEvent(type: string, listener: EventListener): void;
-	detachEvent<K extends keyof IEWindowEventMap>(type: K, listener: (this: Window, ev: IEWindowEventMap[K]) => any): void;
+	attachEvent<K extends keyof IEWindowEventMap>(type: K, listener: (this: Window, ev: IEWindowEventMap[K]) => void): boolean;
+	attachEvent(type: string, listener: EventListener): boolean;
+	detachEvent<K extends keyof IEWindowEventMap>(type: K, listener: (this: Window, ev: IEWindowEventMap[K]) => void): void;
 	detachEvent(type: string, listener: EventListener): void;
 }
 
